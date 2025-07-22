@@ -1,0 +1,112 @@
+program Project1;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  System.SysUtils,Windows;
+
+var opcaoDoUsuario:string;
+
+  procedure LimparTela;
+    begin
+     WinExec('cmd /c cls', SW_HIDE); // limpa a tela do CMD
+    end;
+
+  //menu
+procedure MenuInicial;
+  var alunos,professores,materias:string;
+  begin
+    WriteLn('   ____________________________ ');
+    WriteLn('  /        Menu Inicial        \');
+    WriteLn(' /                              \');
+    WriteLn('| ----- 1 Alunos           ----- |');
+    WriteLn('| ----- 2 Professores      ----- |');
+    WriteLn('| ----- 3 Matérias         ----- |');
+    WriteLn('| ----- 4 Sair             ----- |');
+    WriteLn(' \                              /');
+    WriteLn('  \____________________________/');
+    WriteLn('Digite a opção que você deseja acessar');
+  end;
+
+  //menu alunos
+procedure MenuAlunos;
+
+  begin
+    WriteLn('   ___________________________ ');
+    WriteLn('  /        Menu Alunos        \');
+    WriteLn(' /                             \');
+    WriteLn('| ----- 1 Add Alunos      ----- |');
+    WriteLn('| ----- 2 Lista De Alunos ----- |');
+    WriteLn('| ----- 3 Notas           ----- |');
+    WriteLn('| ----- 4 Voltar          ----- |');
+    WriteLn(' \                              /');
+    WriteLn('  \____________________________/');
+    WriteLn('Digite a opção que você deseja acessar');
+  end;
+
+
+//  function ValidarCpf (const texto:string):Boolean;
+//    var i:integer;
+//    begin
+//      Result := True;
+//
+//      for i := 1 to Length(texto) do
+//      if not (texto [i] in ['0'..'9']) then begin
+//        Result := False;
+//        WriteLn('O CPF deve conter apenas números');
+//        ReadLn;
+//      end;
+//    end;
+
+  //menu adicionar
+procedure MenuAddAlunos;
+  var nome,cpf:string;
+  var dataNascimento:TDate;
+  begin
+      WriteLn('<------- Adicionar Aluno ------->');
+      WriteLn('Digite o Nome Completo do Aluno:');
+      ReadLn(nome);
+      WriteLn('Digite a Data de Nascimento do Aluno');
+      ReadLn(dataNascimento);
+      WriteLn('Digite o CPF do Aluno');
+      ReadLn(cpf);
+    if Length(cpf) = 11 then begin
+      WriteLn('Aluno Adicionado com sucesso');
+      ReadLn;
+    end else begin
+      WriteLn('O cpf deve conter 11 caracteres');
+      ReadLn;
+    end;
+  end;
+
+
+begin
+  try
+    MenuInicial;
+    ReadLn(opcaoDoUsuario);
+    //opções
+    if (opcaoDoUsuario = '1') then begin
+      LimparTela;
+      sleep(100);
+      MenuAlunos;
+      ReadLn;
+        if (opcaoDoUsuario = '1') then begin
+         LimparTela;
+         sleep(100);
+         MenuAddAlunos;
+        end;
+    end;
+
+  except
+    on E: Exception do
+      Writeln(E.ClassName, ': ', E.Message);
+  end;
+end.
+
+
+//Por enquanto oque fizemos?
+//Criamos o menu inicial
+//Criamos o menu de alunos
+//Criamos o Adicionar Alunos

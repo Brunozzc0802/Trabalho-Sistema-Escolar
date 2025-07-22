@@ -25,12 +25,12 @@ begin
   Writeln('|         MENU PRINCIPAL        |');
   Writeln('|_______________________________|');
   WriteLn('|                               |');
-  Writeln('|  [ 1 ]      Alunos            |');
-  Writeln('|  [ 2 ]   Professores          |');
-  Writeln('|  [ 3 ]     Matérias           |');
-  Writeln('|  [ 4 ]       Sair             |');
+  Writeln('|  [ 1 ]  Alunos                |');
+  Writeln('|  [ 2 ]  Professores           |');
+  Writeln('|  [ 3 ]  Turmas                |');
+  Writeln('|  [ 4 ]  Sair                  |');
   Writeln('|_______________________________|');
-  WriteLn('Digite a opção que você deseja acessar: ');
+  WriteLn('Digite a opÃ§Ã£o que vocÃª deseja acessar: ');
 end;
 
 //menu alunos\\
@@ -41,13 +41,31 @@ begin
   Writeln('|          MENU ALUNOS          |');
   Writeln('|_______________________________|');
   WriteLn('|                               |');
-  Writeln('|  [ 1 ]     Add Alunos         |');
-  Writeln('|  [ 2 ]   Lista De Alunos      |');
-  Writeln('|  [ 3 ]       Notas            |');
-  Writeln('|  [ 4 ]      Voltar            |');
+  Writeln('|  [ 1 ]  Add Alunos            |');
+  Writeln('|  [ 2 ]  Lista De Alunos       |');
+  Writeln('|  [ 3 ]  Notas                 |');
+  Writeln('|  [ 4 ]  Voltar                |');
   Writeln('|_______________________________|');
-  WriteLn('Digite a opção que você deseja acessar: ');
+  WriteLn('Digite a opÃ§Ã£o que vocÃª deseja acessar: ');
 end;
+
+
+//menu professores\\
+procedure MenuProfessores;
+begin
+  Writeln(' _______________________________ ');
+  Writeln('|                               |');
+  Writeln('|        MENU PROFESSORES       |');
+  Writeln('|_______________________________|');
+  WriteLn('|                               |');
+  Writeln('|  [ 1 ]  Add Professor         |');
+  Writeln('|  [ 2 ]  Lista De Professores  |');
+  Writeln('|  [ 3 ]  Voltar                |');
+  Writeln('|_______________________________|');
+  WriteLn('Digite a opÃ§Ã£o que vocÃª deseja acessar: ');
+end;
+
+//MENU ADICIONAR\\
 
 //menu adicionar alunos\\
 procedure MenuAddAlunos;
@@ -66,7 +84,7 @@ begin
     Write('Digite a Data de Nascimento do Aluno: ');
     ReadLn(dataNascimento);
   end else begin
-    Writeln('O nome deve conter no mínimo 10 caracteres');
+    Writeln('O nome deve conter no mÃ­nimo 10 caracteres');
     ReadLn;
   end;
 
@@ -79,21 +97,6 @@ begin
     Writeln('O CPF deve conter 11 caracteres');
     ReadLn;
   end;
-end;
-
-//menu professores\\
-procedure MenuProfessores;
-begin
-  Writeln(' _______________________________ ');
-  Writeln('|                               |');
-  Writeln('|        MENU PROFESSORES       |');
-  Writeln('|_______________________________|');
-  WriteLn('|                               |');
-  Writeln('|  [ 1 ]    Add Professor       |');
-  Writeln('|  [ 2 ]  Lista De Professores  |');
-  Writeln('|  [ 3 ]      Voltar            |');
-  Writeln('|_______________________________|');
-  WriteLn('Digite a opção que você deseja acessar: ');
 end;
 
 //menu adicionar professores\\
@@ -113,14 +116,14 @@ begin
     WriteLn('Digite a Data de Nascimento do Professor: ');
     ReadLn(dataNascimento);
   end else begin
-    Writeln('O nome deve conter no mínimo 10 caracteres');
+    Writeln('O nome deve conter no mÃ­nimo 10 caracteres');
     ReadLn;
   end;
 
   Write('Digite o CPF do Professor: ');
   ReadLn(cpf);
   if Length(cpf) = 11 then begin
-   WriteLn('Digite a matéria do Professor: ');
+   WriteLn('Digite a matÃ©ria do Professor: ');
    ReadLn;
   end else begin
    Writeln('O CPF deve conter 11 caracteres');
@@ -179,4 +182,5 @@ end.
 //Criamos o menu inicial
 //Criamos o menu de alunos
 //Criamos o Adicionar Alunos
-//fizemos a função de voltar para o menu principal
+//fizemos a funÃ§Ã£o de voltar para o menu principal
+//fizemos o menu de professores e de adicionar professor

@@ -1,4 +1,4 @@
-﻿program Project1;
+program Project1;
 
 {$APPTYPE CONSOLE}
 
@@ -65,119 +65,70 @@ begin
   WriteLn('Digite a opção que você deseja acessar: ');
 end;
 
-//função validar nome\\
+//MENU ADICIONAR\\
 
-function ValidarNome(const nome: string): Boolean;
-begin
-  Result := Length(nome) >= 10;
-  if not Result then
-    Writeln('O nome deve conter no mínimo 10 caracteres');
-end;
-
-//função validar data\\
-function ValidarData(const dataStr: string; out data: TDate): Boolean;
-var
-  dia, mes, ano: Integer;
-begin
-  Result := False;
-
-  if Length(dataStr) <> 8 then
-  begin
-    Writeln('Data deve conter exatamente 8 dígitos (DDMMAAAA)');
-    Exit;
-  end;
-
-  try
-    dia := StrToInt(Copy(dataStr, 1, 2));
-    mes := StrToInt(Copy(dataStr, 3, 2));
-    ano := StrToInt(Copy(dataStr, 5, 4));
-
-    if (dia < 1) or (dia > 31) then
-      Writeln('Dia inválido! Deve estar entre 1 e 31')
-    else if (mes < 1) or (mes > 12) then
-      Writeln('Mês inválido! Deve estar entre 1 e 12')
-    else if (ano < 1900) or (ano > 2025) then
-      Writeln('Ano inválido! Deve estar entre 1900 e 2025')
-    else
-    begin
-      data := EncodeDate(ano, mes, dia);
-      Result := True;
-    end;
-  except
-    on E: Exception do
-      Writeln('Formato inválido! Use o formato DDMMAAAA');
-  end;
-end;
-
-//função validar cpf\\
-function ValidarCPF(const cpf: string): Boolean;
-begin
-  Result := Length(cpf) = 11;
-  if not Result then
-    Writeln('O CPF deve conter exatamente 11 caracteres');
-end;
-
-//menu adicionar alunos
+//menu adicionar alunos\\
 procedure MenuAddAlunos;
 var
-  nome, cpf, dataStr: string;
+  nome, cpf: string;
   dataNascimento: TDate;
 begin
   Writeln(' _______________________________ ');
   Writeln('|                               |');
   Writeln('|      Adicionar Um Aluno       |');
   Writeln('|_______________________________|');
+  WriteLn('Digite o Nome Completo do Aluno: ');
+  ReadLn(nome);
+  if Length(nome) >= 10 then
+  begin
+    Write('Digite a Data de Nascimento do Aluno: ');
+    ReadLn(dataNascimento);
+  end else begin
+    Writeln('O nome deve conter no mínimo 10 caracteres');
+    ReadLn;
+  end;
 
-  repeat
-    WriteLn('Digite o Nome Completo do Aluno: ');
-    ReadLn(nome);
-  until ValidarNome(nome);
-
-  repeat
-    WriteLn('Digite a Data de Nascimento do Aluno: ');
-    ReadLn(dataStr);
-  until ValidarData(dataStr, dataNascimento);
-
-  repeat
-    WriteLn('Digite o CPF do Aluno: ');
-    ReadLn(cpf);
-  until ValidarCPF(cpf);
-
-  Writeln('Aluno Adicionado com sucesso!');
-  ReadLn;
+  Write('Digite o CPF do Aluno: ');
+  ReadLn(cpf);
+  if Length(cpf) = 11 then begin
+    Writeln('Aluno Adicionado com sucesso');
+    ReadLn;
+  end else begin
+    Writeln('O CPF deve conter 11 caracteres');
+    ReadLn;
+  end;
 end;
 
-//menu adicionar prof
+//menu adicionar professores\\
 procedure MenuAddProf;
 var
-  nome, cpf, materia, dataStr: string;
+  nome, cpf: string;
   dataNascimento: TDate;
 begin
   Writeln(' _______________________________ ');
   Writeln('|                               |');
   Writeln('|    Adicionar Um Professor     |');
   Writeln('|_______________________________|');
-
-  repeat
-    WriteLn('Digite o Nome Completo do Professor: ');
-    ReadLn(nome);
-  until ValidarNome(nome);
-
-  repeat
+  WriteLn('Digite o Nome Completo do Professor: ');
+  ReadLn(nome);
+  if Length(nome) >= 10 then
+  begin
     WriteLn('Digite a Data de Nascimento do Professor: ');
-    ReadLn(dataStr);
-  until ValidarData(dataStr, dataNascimento);
+    ReadLn(dataNascimento);
+  end else begin
+    Writeln('O nome deve conter no mínimo 10 caracteres');
+    ReadLn;
+  end;
 
-  repeat
-    WriteLn('Digite o CPF do Professor: ');
-    ReadLn(cpf);
-  until ValidarCPF(cpf);
-
-  WriteLn('Digite a Matéria do Professor: ');
-  ReadLn(materia);
-
-  Writeln('Professor Adicionado com sucesso!');
-  ReadLn;
+  Write('Digite o CPF do Professor: ');
+  ReadLn(cpf);
+  if Length(cpf) = 11 then begin
+   WriteLn('Digite a matéria do Professor: ');
+   ReadLn;
+  end else begin
+   Writeln('O CPF deve conter 11 caracteres');
+   ReadLn;
+  end;
 end;
 
 begin
